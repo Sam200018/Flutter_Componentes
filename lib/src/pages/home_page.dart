@@ -4,8 +4,6 @@ import 'package:componentes/src/providers/menu_provider.dart';
 
 import 'package:componentes/src/utils/icono_string_util.dart';
 
-import 'package:componentes/src/pages/alert_page.dart';
-
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -44,11 +42,13 @@ class HomePage extends StatelessWidget {
           color: Colors.blue,
         ),
         onTap: () {
-          final route = MaterialPageRoute(
-            builder: (context) => AlertPage(),
-          );
+          Navigator.pushNamed(context, opt['ruta']);
 
-          Navigator.push(context, route);
+          // final route = MaterialPageRoute(
+          //   builder: (context) => AlertPage(),
+          // );
+
+          // Navigator.push(context, route);
         },
       );
       opciones

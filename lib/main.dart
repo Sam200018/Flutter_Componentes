@@ -14,10 +14,9 @@ class MyApp extends StatelessWidget {
       // home: HomePageTemp(),
       // home: HomePage(),
       initialRoute:
-          '/', //esto es para decirle a nuestra app que esete debe de ser la ruta principal
+          '/', //esto es para decirle a nuestra app que este debe de ser la ruta principal
       routes: getApplicationRoutes(),
       onGenerateRoute: (settings) {
-        print('Ruta llamada: ${settings.name}');
         return MaterialPageRoute(
           builder: (BuildContext context) => AlertPage(),
         );

@@ -10,6 +10,10 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   String _nombre = '';
   String _email = '';
+  String _fecha = '';
+
+  TextEditingController _inputFieldDate = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,6 +29,8 @@ class _InputPageState extends State<InputPage> {
             _crearEmail(),
             Divider(),
             _crearPassword(),
+            Divider(),
+            _crearFecha(context),
             Divider(),
             _crearPersona(),
           ],
@@ -83,8 +89,8 @@ class _InputPageState extends State<InputPage> {
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20.0),
         ),
-        hintText: 'Pasword',
-        labelText: 'Pasword',
+        hintText: 'Password',
+        labelText: 'Password',
         suffixIcon: Icon(Icons.lock_open),
         icon: Icon(Icons.lock),
       ),
@@ -94,6 +100,41 @@ class _InputPageState extends State<InputPage> {
         });
       },
     );
+  }
+
+  Widget _crearFecha(BuildContext context) {
+    return TextField(
+      controller: _inputFieldDate,
+      enableInteractiveSelection: false,
+      decoration: InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        hintText: 'Fecha de nacimiento',
+        labelText: 'Fecha de nacimiento',
+        suffixIcon: Icon(Icons.calendar_view_day),
+        icon: Icon(Icons.calendar_today),
+      ),
+      onTap: () {
+        FocusScope.of(context).requestFocus(new FocusNode());
+        _selectDate(context);
+      },
+    );
+  }
+
+  _selectDate(BuildContext context) async {
+    DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: new DateTime.now(),
+      firstDate: new DateTime(2018),
+      lastDate: new DateTime(2025),
+    );
+    if (picked != null) {
+      setState(() {
+        _fecha = picked.toString();
+        _inputFieldDate.text = _fecha;
+      });
+    }
   }
 
   Widget _crearPersona() {

@@ -4,7 +4,8 @@ final _icon = <String, IconData>{
   'add_alert': Icons.add_alert,
   'accessibility': Icons.accessibility,
   'folder_open': Icons.folder_open,
-  'donut_large': Icons.format_clear
+  'donut_large': Icons.format_clear,
+  'input': Icons.input,
 };
 
 Icon getICon(String nombreICono) {
